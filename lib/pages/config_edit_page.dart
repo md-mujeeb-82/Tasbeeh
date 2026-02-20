@@ -241,9 +241,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                             children: [
                               Text('Audio Alert',
                                   style: TextStyle(
-                                      fontSize: 16 /
-                                          MediaQuery.of(context)
-                                              .textScaleFactor,
+                                      fontSize: MediaQuery.of(context).textScaler.scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
                                   scale: 2,
@@ -253,7 +251,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                       setState(() {});
                                     },
                                     value: _isAudioActive,
-                                    activeColor: Colors.green[400],
+                                    activeThumbColor: Colors.green[400],
                                     activeTrackColor: Colors.blueGrey,
                                     inactiveThumbColor: Colors.blueGrey[300],
                                     inactiveTrackColor: Colors.blueGrey,
@@ -266,9 +264,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                             children: [
                               Text('Vibration Alert',
                                   style: TextStyle(
-                                      fontSize: 16 /
-                                          MediaQuery.of(context)
-                                              .textScaleFactor,
+                                      fontSize: MediaQuery.of(context).textScaler.scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
                                   scale: 2,
@@ -278,7 +274,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                       setState(() {});
                                     },
                                     value: _isVibrateActive,
-                                    activeColor: Colors.green[400],
+                                    activeThumbColor: Colors.green[400],
                                     activeTrackColor: Colors.blueGrey,
                                     inactiveThumbColor: Colors.blueGrey[300],
                                     inactiveTrackColor: Colors.blueGrey,
@@ -291,9 +287,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                             children: [
                               Text('Auto Pilot',
                                   style: TextStyle(
-                                      fontSize: 16 /
-                                          MediaQuery.of(context)
-                                              .textScaleFactor,
+                                      fontSize: MediaQuery.of(context).textScaler.scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
                                   scale: 2,
@@ -303,7 +297,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                       setState(() {});
                                     },
                                     value: _isAutoPilotActive,
-                                    activeColor: Colors.green[400],
+                                    activeThumbColor: Colors.green[400],
                                     activeTrackColor: Colors.blueGrey,
                                     inactiveThumbColor: Colors.blueGrey[300],
                                     inactiveTrackColor: Colors.blueGrey,
@@ -316,9 +310,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                             children: [
                               Text('Notifications',
                                   style: TextStyle(
-                                      fontSize: 16 /
-                                          MediaQuery.of(context)
-                                              .textScaleFactor,
+                                      fontSize: MediaQuery.of(context).textScaler.scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
                                   scale: 2,
@@ -329,7 +321,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                       setState(() {});
                                     },
                                     value: _isNotificationActive,
-                                    activeColor: Colors.green[400],
+                                    activeThumbColor: Colors.green[400],
                                     activeTrackColor: Colors.blueGrey,
                                     inactiveThumbColor: Colors.blueGrey[300],
                                     inactiveTrackColor: Colors.blueGrey,
@@ -342,9 +334,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                             children: [
                               Text('Speech Alert',
                                   style: TextStyle(
-                                      fontSize: 16 /
-                                          MediaQuery.of(context)
-                                              .textScaleFactor,
+                                      fontSize: MediaQuery.of(context).textScaler.scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
                                   scale: 2,
@@ -354,7 +344,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                       setState(() {});
                                     },
                                     value: _isSpeechActive,
-                                    activeColor: Colors.green[400],
+                                    activeThumbColor: Colors.green[400],
                                     activeTrackColor: Colors.blueGrey,
                                     inactiveThumbColor: Colors.blueGrey[300],
                                     inactiveTrackColor: Colors.blueGrey,
@@ -367,9 +357,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                             children: [
                               Text('Use Smart Device',
                                   style: TextStyle(
-                                      fontSize: 16 /
-                                          MediaQuery.of(context)
-                                              .textScaleFactor,
+                                      fontSize: MediaQuery.of(context).textScaler.scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
                                   scale: 2,
@@ -379,7 +367,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                       setState(() {});
                                     },
                                     value: _isUsingDevice,
-                                    activeColor: Colors.green[400],
+                                    activeThumbColor: Colors.green[400],
                                     activeTrackColor: Colors.blueGrey,
                                     inactiveThumbColor: Colors.blueGrey[300],
                                     inactiveTrackColor: Colors.blueGrey,
@@ -390,8 +378,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                         if (_isUsingDevice)
                           Text('Device Type',
                               style: TextStyle(
-                                fontSize:
-                                    16 / MediaQuery.of(context).textScaleFactor,
+                                fontSize: MediaQuery.of(context).textScaler.scale(16),
                               )),
                         if (_isUsingDevice)
                           Row(
@@ -402,9 +389,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                         MediaQuery.of(context).size.width / 10),
                                 Text('Bluetooth',
                                     style: TextStyle(
-                                        fontSize: 16 /
-                                            MediaQuery.of(context)
-                                                .textScaleFactor,
+                                        fontSize: MediaQuery.of(context).textScaler.scale(16),
                                         fontWeight: FontWeight.bold)),
                                 SizedBox(
                                     width: MediaQuery.of(context).size.width /
@@ -417,7 +402,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                       setState(() {});
                                     },
                                     value: _isWiFiDevice,
-                                    activeColor: Colors.green[400],
+                                    activeThumbColor: Colors.green[400],
                                     activeTrackColor: Colors.blueGrey,
                                     inactiveThumbColor: Colors.blue,
                                     inactiveTrackColor: Colors.blueGrey,
@@ -428,9 +413,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                         100),
                                 Text('WiFi',
                                     style: TextStyle(
-                                        fontSize: 16 /
-                                            MediaQuery.of(context)
-                                                .textScaleFactor,
+                                        fontSize: MediaQuery.of(context).textScaler.scale(16),
                                         fontWeight: FontWeight.bold)),
                                 SizedBox(
                                     width:

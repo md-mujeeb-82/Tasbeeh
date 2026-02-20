@@ -10,9 +10,7 @@ class AboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double textScaleFactor = MediaQuery.of(context).textScaleFactor;
-    final double fontSize =
-        (MediaQuery.of(context).size.width >= 380 ? 20 : 15) / textScaleFactor;
+    final double fontSize = MediaQuery.of(context).textScaler.scale(MediaQuery.of(context).size.width >= 380 ? 20 : 15);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).primaryColor,

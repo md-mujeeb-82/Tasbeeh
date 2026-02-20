@@ -120,10 +120,9 @@ class _HomePageState extends State<HomePage> {
         title: Text(
           'Smart Tasbeeh',
           style: TextStyle(
-              fontSize: (Platform.isAndroid
+              fontSize: MediaQuery.of(context).textScaler.scale(Platform.isAndroid
                       ? (MediaQuery.of(context).size.width >= 380 ? 19 : 15)
-                      : 15) /
-                  MediaQuery.of(context).textScaleFactor),
+                      : 15)),
         ),
       ),
       drawer: Drawer(
@@ -150,8 +149,7 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(
                               color: Colors.green[800],
                               fontWeight: FontWeight.bold,
-                              fontSize:
-                                  100 / MediaQuery.of(context).textScaleFactor),
+                              fontSize: MediaQuery.of(context).textScaler.scale(100)),
                         ),
                       ),
                       backgroundColor: Colors.grey[300],
@@ -177,18 +175,14 @@ class _HomePageState extends State<HomePage> {
                                   style: TextStyle(
                                       color: Colors.green[800],
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 30 /
-                                          MediaQuery.of(context)
-                                              .textScaleFactor),
+                                      fontSize: MediaQuery.of(context).textScaler.scale(30)),
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height /
                                         80),
                                 Text('Total',
                                     style: TextStyle(
-                                        fontSize: 16 /
-                                            MediaQuery.of(context)
-                                                .textScaleFactor,
+                                        fontSize: MediaQuery.of(context).textScaler.scale(16),
                                         fontWeight: FontWeight.bold)),
                               ],
                             ),
@@ -201,18 +195,14 @@ class _HomePageState extends State<HomePage> {
                                   style: TextStyle(
                                       color: Colors.green[800],
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 30 /
-                                          MediaQuery.of(context)
-                                              .textScaleFactor),
+                                      fontSize: MediaQuery.of(context).textScaler.scale(30)),
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height /
                                         80),
                                 Text('Today',
                                     style: TextStyle(
-                                        fontSize: 16 /
-                                            MediaQuery.of(context)
-                                                .textScaleFactor,
+                                        fontSize: MediaQuery.of(context).textScaler.scale(16),
                                         fontWeight: FontWeight.bold)),
                               ],
                             ),
@@ -225,18 +215,14 @@ class _HomePageState extends State<HomePage> {
                                   style: TextStyle(
                                       color: Colors.green[800],
                                       fontWeight: FontWeight.bold,
-                                      fontSize: 30 /
-                                          MediaQuery.of(context)
-                                              .textScaleFactor),
+                                      fontSize: MediaQuery.of(context).textScaler.scale(30)),
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height /
                                         80),
                                 Text('Target',
                                     style: TextStyle(
-                                        fontSize: 16 /
-                                            MediaQuery.of(context)
-                                                .textScaleFactor,
+                                        fontSize: MediaQuery.of(context).textScaler.scale(16),
                                         fontWeight: FontWeight.bold)),
                               ],
                             ),
@@ -282,8 +268,7 @@ class _HomePageState extends State<HomePage> {
                               label: Text(
                                 'Reset',
                                 style: TextStyle(
-                                    fontSize: 10 /
-                                        MediaQuery.of(context).textScaleFactor),
+                                    fontSize: MediaQuery.of(context).textScaler.scale(10)),
                               ),
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.blueGrey),
@@ -322,9 +307,7 @@ class _HomePageState extends State<HomePage> {
                                   label: Text(
                                     'End Day',
                                     style: TextStyle(
-                                        fontSize: 10 /
-                                            MediaQuery.of(context)
-                                                .textScaleFactor),
+                                        fontSize:MediaQuery.of(context).textScaler.scale(10)),
                                   ),
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.blueGrey),
@@ -357,9 +340,7 @@ class _HomePageState extends State<HomePage> {
                                   label: Text(
                                     'End Session',
                                     style: TextStyle(
-                                        fontSize: 10 /
-                                            MediaQuery.of(context)
-                                                .textScaleFactor),
+                                        fontSize: MediaQuery.of(context).textScaler.scale(10)),
                                   ),
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.blueGrey),
@@ -385,9 +366,7 @@ class _HomePageState extends State<HomePage> {
                                       ? 'Stop Auto Tasbeeh'
                                       : 'Start Auto Tasbeeh',
                                   style: TextStyle(
-                                      fontSize: 35 /
-                                          MediaQuery.of(context)
-                                              .textScaleFactor),
+                                      fontSize: MediaQuery.of(context).textScaler.scale(35)),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: data.isPlayPause
@@ -404,9 +383,7 @@ class _HomePageState extends State<HomePage> {
                                 label: Text(
                                   'Tick',
                                   style: TextStyle(
-                                      fontSize: 80 /
-                                          MediaQuery.of(context)
-                                              .textScaleFactor),
+                                      fontSize: MediaQuery.of(context).textScaler.scale(80)),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.green[800]),

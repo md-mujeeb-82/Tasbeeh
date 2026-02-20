@@ -26,10 +26,8 @@ class TasbeehAudioHandler extends BaseAudioHandler {
   bool isPausedDueToPhoneCall = false;
 
   void setStream() {
-    PhoneState.phoneStateStream.listen((event) {
-      if (event != null) {
-        status = event;
-      }
+    PhoneState.stream.listen((event) {
+        status = event.status;
     });
   }
 

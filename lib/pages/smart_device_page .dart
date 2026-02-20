@@ -93,10 +93,9 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
         title: Text(
           'Smart Device',
           style: TextStyle(
-              fontSize: (Platform.isAndroid
+              fontSize: MediaQuery.of(context).textScaler.scale(Platform.isAndroid
                       ? (MediaQuery.of(context).size.width >= 380 ? 19 : 15)
-                      : 15) /
-                  MediaQuery.of(context).textScaleFactor),
+                      : 15)),
         ),
         actions: [
           if (data.isUsingDevice && data.isWiFiDevice)
@@ -115,9 +114,9 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                 }
               },
               style: ButtonStyle(
-                  elevation: MaterialStateProperty.all<double>(0),
+                  elevation: WidgetStateProperty.all<double>(0),
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.green)),
+                      WidgetStateProperty.all<Color>(Colors.green)),
               icon: const Icon(Icons.refresh),
               label: const Text('Refresh'),
             ),
@@ -132,9 +131,9 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                 setState(() {});
               },
               style: ButtonStyle(
-                  elevation: MaterialStateProperty.all<double>(0),
+                  elevation: WidgetStateProperty.all<double>(0),
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.green)),
+                      WidgetStateProperty.all<Color>(Colors.green)),
               icon: data.isDeviceConnected
                   ? const Icon(Icons.bluetooth_connected)
                   : const Icon(Icons.bluetooth),
@@ -151,9 +150,9 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                 setState(() {});
               },
               style: ButtonStyle(
-                  elevation: MaterialStateProperty.all<double>(0),
+                  elevation: WidgetStateProperty.all<double>(0),
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(Colors.green)),
+                      WidgetStateProperty.all<Color>(Colors.green)),
               icon: const Icon(Icons.refresh),
               label: const Text(''),
             ),
@@ -189,9 +188,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                     'Smart Device Data',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 20 /
-                                            MediaQuery.of(context)
-                                                .textScaleFactor),
+                                        fontSize: MediaQuery.of(context).textScaler.scale(20)),
                                   ),
                                   SizedBox(
                                       height:
@@ -213,9 +210,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                             style: TextStyle(
                                                 color: Colors.green[800],
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: countFontSize /
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor),
+                                                fontSize: MediaQuery.of(context).textScaler.scale(countFontSize.toDouble())),
                                           ),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -224,9 +219,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                                   80),
                                           Text('Total',
                                               style: TextStyle(
-                                                  fontSize: 16 /
-                                                      MediaQuery.of(context)
-                                                          .textScaleFactor,
+                                                  fontSize: MediaQuery.of(context).textScaler.scale(16),
                                                   fontWeight: FontWeight.bold)),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -286,9 +279,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                             style: TextStyle(
                                                 color: Colors.green[800],
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: countFontSize /
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor),
+                                                fontSize: MediaQuery.of(context).textScaler.scale(countFontSize.toDouble())),
                                           ),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -297,9 +288,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                                   80),
                                           Text('Today',
                                               style: TextStyle(
-                                                  fontSize: 16 /
-                                                      MediaQuery.of(context)
-                                                          .textScaleFactor,
+                                                  fontSize: MediaQuery.of(context).textScaler.scale(16),
                                                   fontWeight: FontWeight.bold)),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -359,9 +348,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                             style: TextStyle(
                                                 color: Colors.green[800],
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: countFontSize /
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor),
+                                                fontSize: MediaQuery.of(context).textScaler.scale(countFontSize.toDouble())),
                                           ),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -370,9 +357,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                                   80),
                                           Text('Target',
                                               style: TextStyle(
-                                                  fontSize: 16 /
-                                                      MediaQuery.of(context)
-                                                          .textScaleFactor,
+                                                  fontSize: MediaQuery.of(context).textScaler.scale(16),
                                                   fontWeight: FontWeight.bold)),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -432,9 +417,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                             style: TextStyle(
                                                 color: Colors.green[800],
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: countFontSize /
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor),
+                                                fontSize: MediaQuery.of(context).textScaler.scale(countFontSize.toDouble())),
                                           ),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -443,9 +426,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                                   80),
                                           Text('Current',
                                               style: TextStyle(
-                                                  fontSize: 16 /
-                                                      MediaQuery.of(context)
-                                                          .textScaleFactor,
+                                                  fontSize: MediaQuery.of(context).textScaler.scale(16),
                                                   fontWeight: FontWeight.bold)),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -512,9 +493,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           'Step:',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         Text(
                                           data.deviceStep.toString(),
@@ -522,9 +501,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           style: TextStyle(
                                               color: Colors.green[800],
                                               fontWeight: FontWeight.bold,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         SizedBox(
                                             width: MediaQuery.of(context)
@@ -535,9 +512,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           'Step Duration:',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         Text(
                                           data.deviceTickDuration.toString(),
@@ -545,9 +520,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           style: TextStyle(
                                               color: Colors.green[800],
                                               fontWeight: FontWeight.bold,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         SizedBox(
                                             width: MediaQuery.of(context)
@@ -558,9 +531,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           'Min Step Duration:',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         Text(
                                           data.deviceMinTickDuration.toString(),
@@ -568,9 +539,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           style: TextStyle(
                                               color: Colors.green[800],
                                               fontWeight: FontWeight.bold,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                       ]),
                                   SizedBox(
@@ -587,18 +556,14 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           'Audio:',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         Text(
                                           data.deviceIsAudioOn ? 'ON' : 'OFF',
                                           style: TextStyle(
                                               color: Colors.green[800],
                                               fontWeight: FontWeight.bold,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         SizedBox(
                                             width: MediaQuery.of(context)
@@ -609,18 +574,14 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           'Vibration:',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         Text(
                                           data.deviceIsVibrateOn ? 'ON' : 'OFF',
                                           style: TextStyle(
                                               color: Colors.green[800],
                                               fontWeight: FontWeight.bold,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         SizedBox(
                                             width: MediaQuery.of(context)
@@ -631,9 +592,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           'Auto Pilot:',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         Text(
                                           data.deviceIsAutoPilotOn
@@ -642,9 +601,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           style: TextStyle(
                                               color: Colors.green[800],
                                               fontWeight: FontWeight.bold,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                       ]),
                                 ]),
@@ -666,9 +623,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                     'Phone Data',
                                     style: TextStyle(
                                         fontWeight: FontWeight.bold,
-                                        fontSize: 20 /
-                                            MediaQuery.of(context)
-                                                .textScaleFactor),
+                                        fontSize: MediaQuery.of(context).textScaler.scale(20)),
                                   ),
                                   SizedBox(
                                       height:
@@ -690,9 +645,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                             style: TextStyle(
                                                 color: Colors.green[800],
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: countFontSize /
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor),
+                                                fontSize: MediaQuery.of(context).textScaler.scale(countFontSize.toDouble())),
                                           ),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -701,9 +654,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                                   80),
                                           Text('Total',
                                               style: TextStyle(
-                                                  fontSize: 16 /
-                                                      MediaQuery.of(context)
-                                                          .textScaleFactor,
+                                                  fontSize: MediaQuery.of(context).textScaler.scale(16),
                                                   fontWeight: FontWeight.bold)),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -764,9 +715,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                             style: TextStyle(
                                                 color: Colors.green[800],
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: countFontSize /
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor),
+                                                fontSize: MediaQuery.of(context).textScaler.scale(countFontSize.toDouble())),
                                           ),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -775,9 +724,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                                   80),
                                           Text('Today',
                                               style: TextStyle(
-                                                  fontSize: 16 /
-                                                      MediaQuery.of(context)
-                                                          .textScaleFactor,
+                                                  fontSize: MediaQuery.of(context).textScaler.scale(16),
                                                   fontWeight: FontWeight.bold)),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -838,9 +785,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                             style: TextStyle(
                                                 color: Colors.green[800],
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: countFontSize /
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor),
+                                                fontSize: MediaQuery.of(context).textScaler.scale(countFontSize.toDouble())),
                                           ),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -849,9 +794,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                                   80),
                                           Text('Target',
                                               style: TextStyle(
-                                                  fontSize: 16 /
-                                                      MediaQuery.of(context)
-                                                          .textScaleFactor,
+                                                  fontSize: MediaQuery.of(context).textScaler.scale(16),
                                                   fontWeight: FontWeight.bold)),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -912,9 +855,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                             style: TextStyle(
                                                 color: Colors.green[800],
                                                 fontWeight: FontWeight.bold,
-                                                fontSize: countFontSize /
-                                                    MediaQuery.of(context)
-                                                        .textScaleFactor),
+                                                fontSize: MediaQuery.of(context).textScaler.scale(countFontSize.toDouble())),
                                           ),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -923,9 +864,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                                   80),
                                           Text('Current',
                                               style: TextStyle(
-                                                  fontSize: 16 /
-                                                      MediaQuery.of(context)
-                                                          .textScaleFactor,
+                                                  fontSize: MediaQuery.of(context).textScaler.scale(16),
                                                   fontWeight: FontWeight.bold)),
                                           SizedBox(
                                               height: MediaQuery.of(context)
@@ -992,9 +931,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           'Step:',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         Text(
                                           data.step.toString(),
@@ -1002,9 +939,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           style: TextStyle(
                                               color: Colors.green[800],
                                               fontWeight: FontWeight.bold,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         SizedBox(
                                             width: MediaQuery.of(context)
@@ -1015,9 +950,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           'Step Duration:',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         Text(
                                           data.tickDuration.toString(),
@@ -1025,9 +958,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           style: TextStyle(
                                               color: Colors.green[800],
                                               fontWeight: FontWeight.bold,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         SizedBox(
                                             width: MediaQuery.of(context)
@@ -1038,9 +969,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           'Min Step Duration:',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         Text(
                                           data.minTickDuration.toString(),
@@ -1048,9 +977,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           style: TextStyle(
                                               color: Colors.green[800],
                                               fontWeight: FontWeight.bold,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                       ]),
                                   SizedBox(
@@ -1067,18 +994,14 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           'Audio:',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         Text(
                                           data.isAudioOn ? 'ON' : 'OFF',
                                           style: TextStyle(
                                               color: Colors.green[800],
                                               fontWeight: FontWeight.bold,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         SizedBox(
                                             width: MediaQuery.of(context)
@@ -1089,18 +1012,14 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           'Vibration:',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         Text(
                                           data.isVibrateOn ? 'ON' : 'OFF',
                                           style: TextStyle(
                                               color: Colors.green[800],
                                               fontWeight: FontWeight.bold,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         SizedBox(
                                             width: MediaQuery.of(context)
@@ -1111,18 +1030,14 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                           'Auto Pilot:',
                                           style: TextStyle(
                                               color: Colors.black,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                         Text(
                                           data.isAutoPilotOn ? 'ON' : 'OFF',
                                           style: TextStyle(
                                               color: Colors.green[800],
                                               fontWeight: FontWeight.bold,
-                                              fontSize: (countFontSize - 13) /
-                                                  MediaQuery.of(context)
-                                                      .textScaleFactor),
+                                              fontSize: MediaQuery.of(context).textScaler.scale(countFontSize - 13)),
                                         ),
                                       ]),
                                 ]),
@@ -1176,9 +1091,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                   label: Text(
                                     'Save Config',
                                     style: TextStyle(
-                                        fontSize: 20 /
-                                            MediaQuery.of(context)
-                                                .textScaleFactor),
+                                        fontSize: MediaQuery.of(context).textScaler.scale(20)),
                                   ),
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: data.isPlayPause
@@ -1196,9 +1109,7 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
                                   label: Text(
                                     ' Close ',
                                     style: TextStyle(
-                                        fontSize: 10 /
-                                            MediaQuery.of(context)
-                                                .textScaleFactor),
+                                        fontSize: MediaQuery.of(context).textScaler.scale(10)),
                                   ),
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.amber),
