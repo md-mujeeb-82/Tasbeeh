@@ -11,7 +11,6 @@ import 'package:tasbeeh/widgets/app_drawer.dart';
 import 'package:tasbeeh/widgets/custom_alert_dialog.dart';
 import 'package:tasbeeh/util/function_util.dart';
 import 'package:tasbeeh/util/lifecycle_util.dart';
-import 'package:usb_serial/usb_serial.dart';
 
 class HomePage extends StatefulWidget {
   static const ROUTE_NAME = '/home-page';
@@ -91,7 +90,7 @@ class _HomePageState extends State<HomePage> {
           }
         });
       } else {  // USB Device
-
+        data.initializeUSBDevice();
       }
     }
   }

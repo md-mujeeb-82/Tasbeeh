@@ -11,6 +11,7 @@ import 'package:tasbeeh/util/audio_util.dart';
 import 'package:tasbeeh/util/notifications_util.dart';
 import 'package:tasbeeh/util/http_util.dart';
 import 'package:tasbeeh/util/provider_util.dart';
+import 'package:usb_serial/usb_serial.dart';
 
 class Data with ChangeNotifier {
   // Shared Preferences KEY constants
@@ -91,6 +92,7 @@ class Data with ChangeNotifier {
   TasbeehAudioHandler? _audioHandler;
   BluetoothDevice? tasbeehDevice;
   BluetoothConnection? connection;
+  UsbPort? usbPort;
 
   Data() {
     // Data Saved on Phone
@@ -285,6 +287,7 @@ class Data with ChangeNotifier {
       }
       if (isVibrateOn) {
         await vibrate(1000, 1);
+        await usbPort!.write(Uint8List.fromList([0x3E8, 1]));
       }
       if (isNotificationOn) {
         await notificationUtil.showNotification(5, this);
@@ -316,10 +319,13 @@ class Data with ChangeNotifier {
 
       if (count != 0 && count == targetCount) {
         await vibrate(1000, 1);
+        await usbPort!.write(Uint8List.fromList([0x3E8, 1]));
       } else if (count % 100 == 0) {
         await vibrate(100, 3);
+        await usbPort!.write(Uint8List.fromList([0x64, 3]));
       } else {
         await vibrate(100, 1);
+        await usbPort!.write(Uint8List.fromList([0x64, 1]));
       }
     }
 
@@ -337,6 +343,7 @@ class Data with ChangeNotifier {
   Future<void> vibrate(int millis, int count) async {
     for (int i = 0; i < count; i++) {
       Vibration.vibrate(duration: millis);
+      await usbPort!.write(Uint8List.fromList([millis, 1]));
     }
   }
 
@@ -626,6 +633,41 @@ class Data with ChangeNotifier {
 
     // print('Outgoing: ' + list.toString());
     connection!.output.add(list!);
+  }
+
+  // USB Serial Methods
+  void initializeUSBDevice() async {
+    List<UsbDevice> devices = await UsbSerial.listDevices();
+        print(devices);
+
+        if (devices.isEmpty) {
+          return;
+        }
+        usbPort = await devices[0].create();
+
+        if(usbPort != null) {
+          bool openResult = await usbPort!.open();
+          if ( !openResult ) {
+            print("Failed to open");
+            return;
+          }
+
+          await usbPort!.setDTR(true);
+          await usbPort!.setRTS(true);
+
+          usbPort!.setPortParameters(115200, UsbPort.DATABITS_8, UsbPort.STOPBITS_1, UsbPort.PARITY_NONE);
+
+          // print first result and close port.
+          usbPort!.inputStream!.listen((Uint8List event) {
+            if(event.first == 0) {
+              if(isAutoPilotOn) {
+                togglePlayPause();
+              } else {
+                incrementTasbeeh();
+              }
+            }
+          });
+        }
   }
 
   // Common methods for Smart Device
