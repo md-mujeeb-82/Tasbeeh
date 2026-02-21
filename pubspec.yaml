@@ -3,7 +3,7 @@ description: Flutter App Project for Smart Tasbeeh Project.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.0+1
+version: 2.0.0+1
 
 environment:
   sdk: '>=2.18.6 <3.0.0'
@@ -17,7 +17,7 @@ dependencies:
   url_launcher: ^6.3.2
   audioplayers: ^6.5.1
   vibration: ^3.1.7
-  audio_service: ^0.18.18
+  audio_service: ^0.18.15
   phone_state: ^3.0.1
   permission_handler: ^12.0.1
   flutter_local_notifications: ^20.1.0

@@ -157,6 +157,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
             }
           } else {
             // USB Device
+            data.initializeUSBDevice();
           }
         }
         Navigator.of(context).pop();
