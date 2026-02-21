@@ -48,8 +48,10 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
           data.fetchAndSetWiFiDeviceData().then((value) {
             setState(() {});
           });
-        } else {
+        } else if(data.isBluetoothDevice) {
           data.connectBluetoothDeviceAndListen();
+        } else {
+          
         }
       } catch (error) {
         setState(() {

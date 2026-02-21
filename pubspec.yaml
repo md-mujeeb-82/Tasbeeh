@@ -25,6 +25,7 @@ dependencies:
   intl: ^0.18.0
   nsd: ^2.3.0
   flutter_bluetooth_serial: ^0.4.0
+  usb_serial: ^0.5.2
 
 dev_dependencies:
   flutter_test:

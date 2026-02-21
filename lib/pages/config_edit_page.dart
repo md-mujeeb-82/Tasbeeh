@@ -30,6 +30,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
   bool _isNotificationActive = true;
   bool _isUsingDevice = true;
   bool _isWiFiDevice = true;
+  bool _isBluetoothDevice = true;
   bool _isAutoPilotActive = false;
   Timer? timer;
 
@@ -52,6 +53,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
     _isNotificationActive = data.isNotificationOn;
     _isUsingDevice = data.isUsingDevice;
     _isWiFiDevice = data.isWiFiDevice;
+    _isBluetoothDevice = data.isBluetoothDevice;
     _isAutoPilotActive = data.isAutoPilotOn;
 
     WidgetsBinding.instance.addObserver(LifecycleEventHandler(
@@ -101,6 +103,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
           _isNotificationActive.toString(),
           _isUsingDevice.toString(),
           _isWiFiDevice.toString(),
+          _isBluetoothDevice.toString(),
           _isAutoPilotActive.toString());
       if (result) {
         // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -124,7 +127,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                 }
               });
             });
-          } else {
+          } else if(data.isBluetoothDevice) {
             result = await data.requestPermissionsAndStartDiscovery();
             if (!result) {
               showDialog(
@@ -145,6 +148,8 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                 }
               });
             }
+          } else {  // USB Device
+
           }
         }
         Navigator.of(context).pop();

@@ -28,6 +28,7 @@ class Data with ChangeNotifier {
   static const KEY_IS_NOTIFICATION_ON = 'isNotificationOn';
   static const KEY_IS_USING_DEVICE = 'isUsingDevice';
   static const KEY_IS_WIFI_DEVICE = 'isWiFiDevice';
+  static const KEY_IS_BLUETOOTH_DEVICE = 'isBluetoothDevice';
   static const KEY_AUTO_PILOT_ON = 'isAutoPilotOn';
   static const KEY_IS_PLAY_PAUSE = 'isPlayPause';
   static const KEY_IS_DEVICE_AVAILABLE = 'isDeviceAvailable';
@@ -195,6 +196,7 @@ class Data with ChangeNotifier {
             KEY_IS_NOTIFICATION_ON: isNotificationOn.toString(),
             KEY_IS_USING_DEVICE: isUsingDevice.toString(),
             KEY_IS_WIFI_DEVICE: isWiFiDevice.toString(),
+            KEY_IS_BLUETOOTH_DEVICE: isBluetoothDevice.toString(),
             KEY_AUTO_PILOT_ON: isAutoPilotOn.toString(),
             KEY_IS_PLAY_PAUSE: isPlayPause.toString()
           }));
@@ -227,6 +229,7 @@ class Data with ChangeNotifier {
       String pIsNotificationOn,
       String pIsUsingDevice,
       String pIsWiFiDevice,
+      String pIsBluetoothDevice,
       String pIsAutoPilotOn) async {
     _data[KEY_STEP] = int.parse(pStep);
     _data[KEY_TICK_DURATION] = int.parse(pTickDuration);
@@ -237,6 +240,7 @@ class Data with ChangeNotifier {
     _data[KEY_IS_NOTIFICATION_ON] = pIsNotificationOn.toLowerCase() == 'true';
     _data[KEY_IS_USING_DEVICE] = pIsUsingDevice.toLowerCase() == 'true';
     _data[KEY_IS_WIFI_DEVICE] = pIsWiFiDevice.toLowerCase() == 'true';
+    _data[KEY_IS_BLUETOOTH_DEVICE] = pIsBluetoothDevice.toLowerCase() == 'true';
     _data[KEY_AUTO_PILOT_ON] = pIsAutoPilotOn.toLowerCase() == 'true';
 
     return await saveData();
@@ -756,6 +760,10 @@ class Data with ChangeNotifier {
 
   bool get isWiFiDevice {
     return _data[KEY_IS_WIFI_DEVICE];
+  }
+
+  bool get isBluetoothDevice {
+    return _data[KEY_IS_BLUETOOTH_DEVICE];
   }
 
   bool get isSpeechOn {
