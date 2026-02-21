@@ -20,6 +20,13 @@ class ConfigEditPage extends StatefulWidget {
 class _ConfigEditPageState extends State<ConfigEditPage> {
   final _form = GlobalKey<FormState>();
 
+  static const List<String> deviceTypeList = <String>[
+    'WiFi',
+    'Bluetooth',
+    'USB'
+  ];
+  String dropdownValue = deviceTypeList.first;
+
   String? _step;
   String? _tickDuration;
   String? _minTickDuration;
@@ -127,7 +134,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                 }
               });
             });
-          } else if(data.isBluetoothDevice) {
+          } else if (data.isBluetoothDevice) {
             result = await data.requestPermissionsAndStartDiscovery();
             if (!result) {
               showDialog(
@@ -148,8 +155,8 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                 }
               });
             }
-          } else {  // USB Device
-
+          } else {
+            // USB Device
           }
         }
         Navigator.of(context).pop();
@@ -246,7 +253,9 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                             children: [
                               Text('Audio Alert',
                                   style: TextStyle(
-                                      fontSize: MediaQuery.of(context).textScaler.scale(16),
+                                      fontSize: MediaQuery.of(context)
+                                          .textScaler
+                                          .scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
                                   scale: 2,
@@ -269,7 +278,9 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                             children: [
                               Text('Vibration Alert',
                                   style: TextStyle(
-                                      fontSize: MediaQuery.of(context).textScaler.scale(16),
+                                      fontSize: MediaQuery.of(context)
+                                          .textScaler
+                                          .scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
                                   scale: 2,
@@ -292,7 +303,9 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                             children: [
                               Text('Auto Pilot',
                                   style: TextStyle(
-                                      fontSize: MediaQuery.of(context).textScaler.scale(16),
+                                      fontSize: MediaQuery.of(context)
+                                          .textScaler
+                                          .scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
                                   scale: 2,
@@ -315,7 +328,9 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                             children: [
                               Text('Notifications',
                                   style: TextStyle(
-                                      fontSize: MediaQuery.of(context).textScaler.scale(16),
+                                      fontSize: MediaQuery.of(context)
+                                          .textScaler
+                                          .scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
                                   scale: 2,
@@ -339,7 +354,9 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                             children: [
                               Text('Speech Alert',
                                   style: TextStyle(
-                                      fontSize: MediaQuery.of(context).textScaler.scale(16),
+                                      fontSize: MediaQuery.of(context)
+                                          .textScaler
+                                          .scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
                                   scale: 2,
@@ -362,7 +379,9 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                             children: [
                               Text('Use Smart Device',
                                   style: TextStyle(
-                                      fontSize: MediaQuery.of(context).textScaler.scale(16),
+                                      fontSize: MediaQuery.of(context)
+                                          .textScaler
+                                          .scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
                                   scale: 2,
@@ -381,48 +400,49 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                         SizedBox(
                             height: MediaQuery.of(context).size.height / 50),
                         if (_isUsingDevice)
-                          Text('Device Type',
-                              style: TextStyle(
-                                fontSize: MediaQuery.of(context).textScaler.scale(16),
-                              )),
-                        if (_isUsingDevice)
                           Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width / 10),
-                                Text('Bluetooth',
+                                Text('Smart Device Type',
                                     style: TextStyle(
-                                        fontSize: MediaQuery.of(context).textScaler.scale(16),
+                                        fontSize: MediaQuery.of(context)
+                                            .textScaler
+                                            .scale(16),
                                         fontWeight: FontWeight.bold)),
-                                SizedBox(
-                                    width: MediaQuery.of(context).size.width /
-                                        100),
                                 Transform.scale(
-                                  scale: 2,
-                                  child: Switch(
-                                    onChanged: (value) {
-                                      _isWiFiDevice = !_isWiFiDevice;
-                                      setState(() {});
-                                    },
-                                    value: _isWiFiDevice,
-                                    activeThumbColor: Colors.green[400],
-                                    activeTrackColor: Colors.blueGrey,
-                                    inactiveThumbColor: Colors.blue,
-                                    inactiveTrackColor: Colors.blueGrey,
-                                  ),
-                                ),
-                                SizedBox(
-                                    width: MediaQuery.of(context).size.width /
-                                        100),
-                                Text('WiFi',
-                                    style: TextStyle(
-                                        fontSize: MediaQuery.of(context).textScaler.scale(16),
-                                        fontWeight: FontWeight.bold)),
-                                SizedBox(
-                                    width:
-                                        MediaQuery.of(context).size.width / 10),
+                                    scale: 2,
+                                    child: DropdownButton<String>(
+                                      value: dropdownValue,
+                                      icon: const Icon(Icons.arrow_downward),
+                                      elevation: 16,
+                                      style: const TextStyle(
+                                          color: Colors.deepPurple),
+                                      underline: Container(
+                                          height: 2,
+                                          color: Colors.deepPurpleAccent),
+                                      onChanged: (String? value) {
+                                        // This is called when the user selects an item.
+                                        setState(() {
+                                          dropdownValue = value!;
+                                          if (dropdownValue == deviceTypeList[0]) {  // WiFi
+                                            _isWiFiDevice = true;
+                                            _isBluetoothDevice = false;
+                                          } else if (dropdownValue == deviceTypeList[1]) { // Bluetooth
+                                            _isWiFiDevice = false;
+                                            _isBluetoothDevice = true;
+                                          } else {
+                                            _isWiFiDevice = false;
+                                            _isBluetoothDevice = false;
+                                          }
+                                        });
+                                      },
+                                      items: deviceTypeList
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) {
+                                        return DropdownMenuItem<String>(
+                                            value: value, child: Text(value));
+                                      }).toList(),
+                                    )),
                               ]),
                         SizedBox(
                             height: MediaQuery.of(context).size.height / 15),

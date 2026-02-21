@@ -58,30 +58,28 @@ class AudioUtil {
     _silenceData =
         bytes.buffer.asUint8List(bytes.offsetInBytes, bytes.lengthInBytes);
 
-    audioPlayer.setReleaseMode(ReleaseMode.STOP);
+    audioPlayer.setReleaseMode(ReleaseMode.stop);
   }
 
   Future<void> playTickAudio(bool isSpeech, bool isFast) async {
     isSpeech
-        ? await audioPlayer
-            .playBytes(isFast ? _speechFastTickData : _speechTickData)
-        : await audioPlayer.playBytes(_beepTickData);
+        ? await audioPlayer.play(BytesSource(isFast ? _speechFastTickData : _speechTickData))
+        : await audioPlayer.play(BytesSource(_beepTickData));
   }
 
   Future<void> play100CompleteAudio(bool isSpeech, bool isFast) async {
     isSpeech
-        ? await audioPlayer.playBytes(
-            isFast ? _speechFast100CompleteData : _speech100CompleteData)
-        : await audioPlayer.playBytes(_beep100CompleteData);
+        ? await audioPlayer.play(BytesSource(isFast ? _speechFast100CompleteData : _speech100CompleteData))
+        : await audioPlayer.play(BytesSource(_beep100CompleteData));
   }
 
   Future<void> playTasbeehCompleteAudio(bool isSpeech) async {
     isSpeech
-        ? await audioPlayer.playBytes(_speechFullCompletedData)
-        : await audioPlayer.playBytes(_beepFullCompletedData);
+        ? await audioPlayer.play(BytesSource(_speechFullCompletedData))
+        : await audioPlayer.play(BytesSource(_beepFullCompletedData));
   }
 
   void playSilenceAudio() {
-    audioPlayer.playBytes(_silenceData);
+    audioPlayer.play(BytesSource(_silenceData));
   }
 }

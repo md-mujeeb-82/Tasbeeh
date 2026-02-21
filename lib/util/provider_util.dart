@@ -18,7 +18,7 @@ class ProviderUtil {
     flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()!
-        .requestPermission();
+        .requestNotificationsPermission();
 
     return true;
   }

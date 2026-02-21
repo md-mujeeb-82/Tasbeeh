@@ -27,7 +27,7 @@ class NotificationsUtil {
         const AndroidInitializationSettings('mipmap/ic_launcher');
     var initializationSettings =
         InitializationSettings(android: initializationSettingsAndroid);
-    flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    flutterLocalNotificationsPlugin.initialize(settings: initializationSettings);
   }
 
   Future<void> showNotification(int times, Data pData) async {
@@ -43,7 +43,7 @@ class NotificationsUtil {
       message = message + '.';
     }
     return await flutterLocalNotificationsPlugin
-        .show(0, '', message, notificationDetails, payload: '');
+        .show(id: 0, title: '', body: message, notificationDetails: notificationDetails, payload: '');
   }
 
   void timerMethod() async {

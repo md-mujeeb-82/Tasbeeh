@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vibration/vibration.dart';
-import 'package:flutter_bluetooth_serial/flutter_bluetooth_serial.dart';
+import 'package:flutter_bluetooth_classic_serial/flutter_bluetooth_classic.dart';
 
 import 'package:tasbeeh/services/audio_handler.dart';
 import 'package:tasbeeh/util/audio_util.dart';
@@ -91,7 +91,7 @@ class Data with ChangeNotifier {
   HTTPUtil? httpUtil;
   TasbeehAudioHandler? _audioHandler;
   BluetoothDevice? tasbeehDevice;
-  BluetoothConnection? connection;
+  FlutterBluetoothClassic ? blueTooth;
   UsbPort? usbPort;
 
   Data() {
@@ -401,8 +401,8 @@ class Data with ChangeNotifier {
         if (result) {
           try {
             // Setup a list of the bonded devices
-            FlutterBluetoothSerial.instance
-                .getBondedDevices()
+            FlutterBluetoothClassic()
+                .getPairedDevices()
                 .then((List<BluetoothDevice> bondedDevices) {
               // Find our Bluetooth Device and set it in our Service
               setBluetoothDevice(bondedDevices
@@ -444,17 +444,17 @@ class Data with ChangeNotifier {
     }
     isFetchingData = true;
     try {
-      connection = await BluetoothConnection.toAddress(tasbeehDevice!.address);
+      await blueTooth!.connect(tasbeehDevice!.address);
       setDirty('', true);
 
-      connection!.input!.listen((Uint8List data) async {
-        String header = String.fromCharCode(data.elementAt(0));
+      blueTooth!.onDataReceived.listen((BluetoothData data) async {
+        String header = String.fromCharCode(data.data.elementAt(0));
 
         // print('Incoming header: ' + header);
 
         var str = '';
-        for (var i = 1; i < data.length; i++) {
-          str = str + String.fromCharCode(data.elementAt(i));
+        for (var i = 1; i < data.data.length; i++) {
+          str = str + String.fromCharCode(data.data.elementAt(i));
         }
 
         // print('Incoming data: ' + str);
@@ -525,7 +525,7 @@ class Data with ChangeNotifier {
 
   void disconnectBluetoothDevice() async {
     try {
-      await connection!.finish();
+      // await blueTooth!.finish();
       setDirty('', true);
     } catch (error) {
       // Do Nothing
@@ -566,7 +566,7 @@ class Data with ChangeNotifier {
     }
     Uint8List list = Uint8List.fromList(header.codeUnits);
     // print('Outgoing: ' + list.toString());
-    connection!.output.add(list);
+    blueTooth!.sendData(list);
   }
 
   Future<void> saveCountDataToBluetoothDevice(int whichCount) async {
@@ -596,7 +596,7 @@ class Data with ChangeNotifier {
     }
 
     // print('Outgoing: ' + list.toString());
-    connection!.output.add(list!);
+    blueTooth!.sendData(list!);
   }
 
   Future<void> saveConfigDataToBluetoothDevice(int whichConfig) async {
@@ -632,7 +632,7 @@ class Data with ChangeNotifier {
     }
 
     // print('Outgoing: ' + list.toString());
-    connection!.output.add(list!);
+    blueTooth!.sendData(list!);
   }
 
   // USB Serial Methods
@@ -869,7 +869,7 @@ class Data with ChangeNotifier {
   }
 
   bool get isDeviceConnected {
-    if (connection != null && connection!.isConnected) {
+    if (blueTooth != null) {
       return true;
     } else {
       return false;
