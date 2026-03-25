@@ -33,7 +33,11 @@ class MMScaffold {
 
   Widget widget() {
     return Scaffold(
-        appBar: AppBar(title: const Text('Smart Tasbeeh')),
+        appBar: AppBar(
+          title: const Text('Smart Tasbeeh'),
+          backgroundColor: Colors.green[800],
+          foregroundColor: Colors.white,
+        ),
         body: Center(child: _child));
   }
 }

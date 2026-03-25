@@ -102,7 +102,8 @@ class _CountsEditPageState extends State<CountsEditPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Edit Tasbeeh Counts'),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.green[800],
+        foregroundColor: Colors.white,
       ),
       body: Builder(
         builder: (context) => Container(

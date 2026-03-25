@@ -175,7 +175,8 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Configuration'),
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.green[800],
+        foregroundColor: Colors.white,
       ),
       body: Builder(
         builder: (context) => SingleChildScrollView(
@@ -259,7 +260,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                           .scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
-                                  scale: 2,
+                                  scale: 1,
                                   child: Switch(
                                     onChanged: (value) {
                                       _isAudioActive = !_isAudioActive;
@@ -284,7 +285,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                           .scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
-                                  scale: 2,
+                                  scale: 1,
                                   child: Switch(
                                     onChanged: (value) {
                                       _isVibrateActive = !_isVibrateActive;
@@ -309,7 +310,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                           .scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
-                                  scale: 2,
+                                  scale: 1,
                                   child: Switch(
                                     onChanged: (value) {
                                       _isAutoPilotActive = !_isAutoPilotActive;
@@ -334,7 +335,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                           .scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
-                                  scale: 2,
+                                  scale: 1,
                                   child: Switch(
                                     onChanged: (value) {
                                       _isNotificationActive =
@@ -360,7 +361,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                           .scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
-                                  scale: 2,
+                                  scale: 1,
                                   child: Switch(
                                     onChanged: (value) {
                                       _isSpeechActive = !_isSpeechActive;
@@ -385,7 +386,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                           .scale(16),
                                       fontWeight: FontWeight.bold)),
                               Transform.scale(
-                                  scale: 2,
+                                  scale: 1,
                                   child: Switch(
                                     onChanged: (value) {
                                       _isUsingDevice = !_isUsingDevice;
@@ -411,7 +412,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                             .scale(16),
                                         fontWeight: FontWeight.bold)),
                                 Transform.scale(
-                                    scale: 2,
+                                    scale: 1,
                                     child: DropdownButton<String>(
                                       value: dropdownValue,
                                       icon: const Icon(Icons.arrow_downward),

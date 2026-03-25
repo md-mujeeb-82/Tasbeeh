@@ -10,10 +10,13 @@ class AboutPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double fontSize = MediaQuery.of(context).textScaler.scale(MediaQuery.of(context).size.width >= 380 ? 20 : 15);
+    final double fontSize = MediaQuery.of(context)
+        .textScaler
+        .scale(MediaQuery.of(context).size.width >= 380 ? 20 : 15);
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.green[800],
+        foregroundColor: Colors.white,
         title: const Text('About Smart Tasbeeh'),
       ),
       body: SingleChildScrollView(
@@ -32,7 +35,7 @@ class AboutPage extends StatelessWidget {
                       child: Image.asset('assets/images/logo.png'),
                       onTap: () {
                         try {
-                          launchUrl(Uri.https('alithistech.com', '/', {}));
+                          launchUrl(Uri.https('jbrrobotics.tech', '/', {}));
                         } catch (error) {
                           FunctionUtil.showErrorSnackBar(context);
                         }
@@ -45,7 +48,7 @@ class AboutPage extends StatelessWidget {
             const Divider(),
             InkWell(
               child: Text(
-                'alithistech.com',
+                'jbrrobotics.tech',
                 style: TextStyle(
                   fontSize: fontSize,
                   color: Colors.blue,
@@ -54,7 +57,7 @@ class AboutPage extends StatelessWidget {
               ),
               onTap: () {
                 try {
-                  launchUrl(Uri.https('alithistech.com', '/', {}));
+                  launchUrl(Uri.https('jbrrobotics.tech', '/', {}));
                 } catch (error) {
                   FunctionUtil.showErrorSnackBar(context);
                 }
@@ -102,7 +105,10 @@ class AboutPage extends StatelessWidget {
               height: 40,
             ),
             ElevatedButton(
-              child: const Text('        Close        '),
+              child: const Text(
+                '        Close        ',
+                style: TextStyle(color: Colors.white),
+              ),
               style:
                   ElevatedButton.styleFrom(backgroundColor: Colors.green[800]),
               onPressed: () => Navigator.of(context).pop(),

@@ -66,7 +66,7 @@ class _HomePageState extends State<HomePage> {
             }
           });
         });
-      } else if(data.isBluetoothDevice) {
+      } else if (data.isBluetoothDevice) {
         // For Bluetooth Smart Device
         data.requestPermissionsAndStartDiscovery().then((result) {
           if (!result) {
@@ -89,7 +89,8 @@ class _HomePageState extends State<HomePage> {
             });
           }
         });
-      } else {  // USB Device
+      } else {
+        // USB Device
         data.initializeUSBDevice();
       }
     }
@@ -118,11 +119,13 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.green[800],
+        foregroundColor: Colors.white,
         title: Text(
           'Smart Tasbeeh',
           style: TextStyle(
-              fontSize: MediaQuery.of(context).textScaler.scale(Platform.isAndroid
+              fontSize: MediaQuery.of(context).textScaler.scale(
+                  Platform.isAndroid
                       ? (MediaQuery.of(context).size.width >= 380 ? 19 : 15)
                       : 15)),
         ),
@@ -151,7 +154,8 @@ class _HomePageState extends State<HomePage> {
                           style: TextStyle(
                               color: Colors.green[800],
                               fontWeight: FontWeight.bold,
-                              fontSize: MediaQuery.of(context).textScaler.scale(100)),
+                              fontSize:
+                                  MediaQuery.of(context).textScaler.scale(100)),
                         ),
                       ),
                       backgroundColor: Colors.grey[300],
@@ -177,14 +181,18 @@ class _HomePageState extends State<HomePage> {
                                   style: TextStyle(
                                       color: Colors.green[800],
                                       fontWeight: FontWeight.bold,
-                                      fontSize: MediaQuery.of(context).textScaler.scale(30)),
+                                      fontSize: MediaQuery.of(context)
+                                          .textScaler
+                                          .scale(30)),
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height /
                                         80),
                                 Text('Total',
                                     style: TextStyle(
-                                        fontSize: MediaQuery.of(context).textScaler.scale(16),
+                                        fontSize: MediaQuery.of(context)
+                                            .textScaler
+                                            .scale(16),
                                         fontWeight: FontWeight.bold)),
                               ],
                             ),
@@ -197,14 +205,18 @@ class _HomePageState extends State<HomePage> {
                                   style: TextStyle(
                                       color: Colors.green[800],
                                       fontWeight: FontWeight.bold,
-                                      fontSize: MediaQuery.of(context).textScaler.scale(30)),
+                                      fontSize: MediaQuery.of(context)
+                                          .textScaler
+                                          .scale(30)),
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height /
                                         80),
                                 Text('Today',
                                     style: TextStyle(
-                                        fontSize: MediaQuery.of(context).textScaler.scale(16),
+                                        fontSize: MediaQuery.of(context)
+                                            .textScaler
+                                            .scale(16),
                                         fontWeight: FontWeight.bold)),
                               ],
                             ),
@@ -217,14 +229,18 @@ class _HomePageState extends State<HomePage> {
                                   style: TextStyle(
                                       color: Colors.green[800],
                                       fontWeight: FontWeight.bold,
-                                      fontSize: MediaQuery.of(context).textScaler.scale(30)),
+                                      fontSize: MediaQuery.of(context)
+                                          .textScaler
+                                          .scale(30)),
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height /
                                         80),
                                 Text('Target',
                                     style: TextStyle(
-                                        fontSize: MediaQuery.of(context).textScaler.scale(16),
+                                        fontSize: MediaQuery.of(context)
+                                            .textScaler
+                                            .scale(16),
                                         fontWeight: FontWeight.bold)),
                               ],
                             ),
@@ -266,11 +282,17 @@ class _HomePageState extends State<HomePage> {
                                   }
                                 });
                               },
-                              icon: const Icon(Icons.reset_tv),
+                              icon: const Icon(
+                                Icons.reset_tv,
+                                color: Colors.white,
+                              ),
                               label: Text(
                                 'Reset',
                                 style: TextStyle(
-                                    fontSize: MediaQuery.of(context).textScaler.scale(10)),
+                                    fontSize: MediaQuery.of(context)
+                                        .textScaler
+                                        .scale(10),
+                                    color: Colors.white),
                               ),
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.blueGrey),
@@ -305,11 +327,15 @@ class _HomePageState extends State<HomePage> {
                                       }
                                     });
                                   },
-                                  icon: const Icon(Icons.edit_attributes),
+                                  icon: const Icon(Icons.edit_attributes,
+                                      color: Colors.white),
                                   label: Text(
                                     'End Day',
                                     style: TextStyle(
-                                        fontSize:MediaQuery.of(context).textScaler.scale(10)),
+                                        fontSize: MediaQuery.of(context)
+                                            .textScaler
+                                            .scale(10),
+                                        color: Colors.white),
                                   ),
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.blueGrey),
@@ -338,11 +364,15 @@ class _HomePageState extends State<HomePage> {
                                       }
                                     });
                                   },
-                                  icon: const Icon(Icons.edit_note_outlined),
+                                  icon: const Icon(Icons.edit_note_outlined,
+                                      color: Colors.white),
                                   label: Text(
                                     'End Session',
                                     style: TextStyle(
-                                        fontSize: MediaQuery.of(context).textScaler.scale(10)),
+                                        fontSize: MediaQuery.of(context)
+                                            .textScaler
+                                            .scale(10),
+                                        color: Colors.white),
                                   ),
                                   style: ElevatedButton.styleFrom(
                                       backgroundColor: Colors.blueGrey),
@@ -362,13 +392,17 @@ class _HomePageState extends State<HomePage> {
                                     data.isPlayPause
                                         ? Icons.stop
                                         : Icons.play_arrow,
-                                    size: 100),
+                                    size: 100,
+                                    color: Colors.white),
                                 label: Text(
                                   data.isPlayPause
                                       ? 'Stop Auto Tasbeeh'
                                       : 'Start Auto Tasbeeh',
                                   style: TextStyle(
-                                      fontSize: MediaQuery.of(context).textScaler.scale(35)),
+                                      fontSize: MediaQuery.of(context)
+                                          .textScaler
+                                          .scale(35),
+                                      color: Colors.white),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: data.isPlayPause
@@ -381,11 +415,15 @@ class _HomePageState extends State<HomePage> {
                                   await data.incrementTasbeeh();
                                   setState(() {});
                                 },
-                                icon: const Icon(Icons.add, size: 100),
+                                icon: const Icon(Icons.add,
+                                    size: 100, color: Colors.white),
                                 label: Text(
                                   'Tick',
                                   style: TextStyle(
-                                      fontSize: MediaQuery.of(context).textScaler.scale(80)),
+                                      fontSize: MediaQuery.of(context)
+                                          .textScaler
+                                          .scale(80),
+                                      color: Colors.white),
                                 ),
                                 style: ElevatedButton.styleFrom(
                                     backgroundColor: Colors.green[800]),

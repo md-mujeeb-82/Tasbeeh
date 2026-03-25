@@ -91,7 +91,8 @@ class _SmartDevicePageState extends State<SmartDevicePage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).primaryColor,
+        backgroundColor: Colors.green[800],
+        foregroundColor: Colors.white,
         title: Text(
           'Smart Device',
           style: TextStyle(
