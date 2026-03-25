@@ -453,10 +453,14 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                         // This is called when the user selects an item.
                                         setState(() {
                                           dropdownValue = value!;
-                                          if (dropdownValue == deviceTypeList[0]) {  // WiFi
+                                          if (dropdownValue ==
+                                              deviceTypeList[0]) {
+                                            // WiFi
                                             _isWiFiDevice = true;
                                             _isBluetoothDevice = false;
-                                          } else if (dropdownValue == deviceTypeList[1]) { // Bluetooth
+                                          } else if (dropdownValue ==
+                                              deviceTypeList[1]) {
+                                            // Bluetooth
                                             _isWiFiDevice = false;
                                             _isBluetoothDevice = true;
                                           } else {
@@ -482,8 +486,12 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                                   backgroundColor: Colors.green[800],
                                   elevation: 4,
                                 ),
-                                child: const Text('        Save        ',
-                                    style: TextStyle(color: Colors.white)),
+                                child: Text('        Save        ',
+                                    style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: MediaQuery.of(context)
+                                            .textScaler
+                                            .scale(30))),
                                 onPressed: () =>
                                     _validateAndSubmitForm(context),
                               ),

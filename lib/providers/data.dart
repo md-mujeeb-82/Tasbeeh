@@ -211,6 +211,8 @@ class Data with ChangeNotifier {
     _data[KEY_STEP] = 1;
     _data[KEY_TICK_DURATION] = 2000;
     _data[KEY_MIN_TICK_DURATION] = 1200;
+    _data[KEY_IS_99_NAMES] = false;
+    _data[KEY_CURRENT_NAME_INDEX] = 0;
     _data[KEY_AUDIO_ON] = true;
     _data[KEY_VIBRATE_ON] = true;
     _data[KEY_IS_SPEECH_ON] = true;

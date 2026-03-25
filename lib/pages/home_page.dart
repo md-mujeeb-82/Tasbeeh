@@ -158,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                               fontWeight: FontWeight.bold,
                               fontSize: MediaQuery.of(context)
                                   .textScaler
-                                  .scale(data.is99Names ? 30 : 100)),
+                                  .scale(data.is99Names ? 50 : 170)),
                         ),
                       ),
                       backgroundColor: Colors.grey[300],
@@ -187,7 +187,7 @@ class _HomePageState extends State<HomePage> {
                                       fontWeight: FontWeight.bold,
                                       fontSize: MediaQuery.of(context)
                                           .textScaler
-                                          .scale(30)),
+                                          .scale(50)),
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height /
@@ -196,7 +196,7 @@ class _HomePageState extends State<HomePage> {
                                     style: TextStyle(
                                         fontSize: MediaQuery.of(context)
                                             .textScaler
-                                            .scale(16),
+                                            .scale(30),
                                         fontWeight: FontWeight.bold)),
                               ],
                             ),
@@ -212,7 +212,7 @@ class _HomePageState extends State<HomePage> {
                                       fontWeight: FontWeight.bold,
                                       fontSize: MediaQuery.of(context)
                                           .textScaler
-                                          .scale(30)),
+                                          .scale(50)),
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height /
@@ -221,7 +221,7 @@ class _HomePageState extends State<HomePage> {
                                     style: TextStyle(
                                         fontSize: MediaQuery.of(context)
                                             .textScaler
-                                            .scale(16),
+                                            .scale(30),
                                         fontWeight: FontWeight.bold)),
                               ],
                             ),
@@ -237,7 +237,7 @@ class _HomePageState extends State<HomePage> {
                                       fontWeight: FontWeight.bold,
                                       fontSize: MediaQuery.of(context)
                                           .textScaler
-                                          .scale(30)),
+                                          .scale(50)),
                                 ),
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height /
@@ -246,7 +246,7 @@ class _HomePageState extends State<HomePage> {
                                     style: TextStyle(
                                         fontSize: MediaQuery.of(context)
                                             .textScaler
-                                            .scale(16),
+                                            .scale(30),
                                         fontWeight: FontWeight.bold)),
                               ],
                             ),
@@ -299,7 +299,7 @@ class _HomePageState extends State<HomePage> {
                                 style: TextStyle(
                                     fontSize: MediaQuery.of(context)
                                         .textScaler
-                                        .scale(10),
+                                        .scale(30),
                                     color: Colors.white),
                               ),
                               style: ElevatedButton.styleFrom(
@@ -344,7 +344,7 @@ class _HomePageState extends State<HomePage> {
                                     style: TextStyle(
                                         fontSize: MediaQuery.of(context)
                                             .textScaler
-                                            .scale(10),
+                                            .scale(30),
                                         color: Colors.white),
                                   ),
                                   style: ElevatedButton.styleFrom(
@@ -381,7 +381,7 @@ class _HomePageState extends State<HomePage> {
                                     style: TextStyle(
                                         fontSize: MediaQuery.of(context)
                                             .textScaler
-                                            .scale(10),
+                                            .scale(30),
                                         color: Colors.white),
                                   ),
                                   style: ElevatedButton.styleFrom(

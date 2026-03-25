@@ -14,7 +14,7 @@
     <application
         android:label="tasbeeh"
         android:name="${applicationName}"
-        android:icon="@mipmap/ic_launcher">
+        android:icon="@mipmap/launcher_icon">
         <service android:name="com.ryanheise.audioservice.AudioService"
                 android:foregroundServiceType="mediaPlayback"
                 android:exported="true">

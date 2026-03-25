@@ -105,9 +105,11 @@ class AboutPage extends StatelessWidget {
               height: 40,
             ),
             ElevatedButton(
-              child: const Text(
+              child: Text(
                 '        Close        ',
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: MediaQuery.of(context).textScaler.scale(30)),
               ),
               style:
                   ElevatedButton.styleFrom(backgroundColor: Colors.green[800]),

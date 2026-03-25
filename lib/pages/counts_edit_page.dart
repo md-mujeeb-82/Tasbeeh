@@ -193,8 +193,12 @@ class _CountsEditPageState extends State<CountsEditPage> {
                                 backgroundColor: Colors.green[800],
                                 elevation: 4,
                               ),
-                              child: const Text('        Save        ',
-                                  style: TextStyle(color: Colors.white)),
+                              child: Text('        Save        ',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: MediaQuery.of(context)
+                                          .textScaler
+                                          .scale(30))),
                               onPressed: () => _validateAndSubmitForm(context),
                             ),
                     ],
