@@ -125,7 +125,7 @@ class TasbeehAudioHandler extends BaseAudioHandler {
         ', Target: ' +
         data!.targetCount.toString());
 
-    if (data!.count >= data!.targetCount) {
+    if ((data!.is99Names && data!.currentNameIndex >= Data.Allah99Names.length) || (!data!.is99Names && data!.count >= data!.targetCount)) {
       data!.changePlayPauseState(false);
     }
 
@@ -138,11 +138,18 @@ class TasbeehAudioHandler extends BaseAudioHandler {
 
     int autoPilotTickDelay = data!.tickDuration;
     if (data!.isAutoPilotOn) {
-      autoPilotTickDelay =
-          (autoPilotTickDelay - ((data!.minTickDuration / 50) * data!.count))
-              .toInt();
-      if (autoPilotTickDelay < data!.minTickDuration) {
-        autoPilotTickDelay = data!.minTickDuration;
+      if(data!.is99Names) {
+
+        if(data!.currentNameIndex == 83 || data!.currentNameIndex == 84) {
+          autoPilotTickDelay = (autoPilotTickDelay * Data.TICK_MULTIPLIER).toInt();
+        }
+      } else {
+        autoPilotTickDelay =
+            (autoPilotTickDelay - ((data!.minTickDuration / 50) * data!.count))
+                .toInt();
+        if (autoPilotTickDelay < data!.minTickDuration) {
+          autoPilotTickDelay = data!.minTickDuration;
+        }
       }
     }
 

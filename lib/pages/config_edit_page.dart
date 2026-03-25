@@ -31,6 +31,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
   String? _tickDuration;
   String? _minTickDuration;
   bool _isLoading = false;
+  bool _is99Names = false;
   bool _isAudioActive = true;
   bool _isVibrateActive = true;
   bool _isSpeechActive = true;
@@ -54,6 +55,7 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
     _stepController.text = data.step.toString();
     _tickDurationController.text = data.tickDuration.toString();
     _minTickDurationController.text = data.minTickDuration.toString();
+    _is99Names = data.is99Names;
     _isAudioActive = data.isAudioOn;
     _isVibrateActive = data.isVibrateOn;
     _isSpeechActive = data.isSpeechOn;
@@ -104,6 +106,8 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
           _step.toString(),
           _tickDuration.toString(),
           _minTickDuration.toString(),
+          _is99Names.toString(),
+          data.currentNameIndex.toString(),
           _isAudioActive.toString(),
           _isVibrateActive.toString(),
           _isSpeechActive.toString(),
@@ -250,6 +254,29 @@ class _ConfigEditPageState extends State<ConfigEditPage> {
                         ),
                         SizedBox(
                             height: MediaQuery.of(context).size.height / 22),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text('99 Names of Allah Tasbeeh',
+                                  style: TextStyle(
+                                      fontSize: MediaQuery.of(context)
+                                          .textScaler
+                                          .scale(16),
+                                      fontWeight: FontWeight.bold)),
+                              Transform.scale(
+                                  scale: 1,
+                                  child: Switch(
+                                    onChanged: (value) {
+                                      _is99Names = !_is99Names;
+                                      setState(() {});
+                                    },
+                                    value: _is99Names,
+                                    activeThumbColor: Colors.green[400],
+                                    activeTrackColor: Colors.blueGrey,
+                                    inactiveThumbColor: Colors.blueGrey[300],
+                                    inactiveTrackColor: Colors.blueGrey,
+                                  )),
+                            ]),
                         Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [

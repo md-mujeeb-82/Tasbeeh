@@ -14,6 +14,111 @@ import 'package:tasbeeh/util/provider_util.dart';
 import 'package:usb_serial/usb_serial.dart';
 
 class Data with ChangeNotifier {
+  // 99 Names of Allah
+  static const Allah99Names = [
+    "Ar-Rahmaan",
+    "Ar-Raheem",
+    "Al-Maalik",
+    "Al-Quddoos",
+    "As-Salaam",
+    "Al-Mu'min",
+    "Al-Muhaymin",
+    "Al-'Azeez",
+    "Al-Jabbaar",
+    "Al-Mutakabbir",
+    "Al-Khaaliq",
+    "Al-Baari'",
+    "Al-Musawwir",
+    "Al-Ghaffaar",
+    "Al-Qahhaar",
+    "Al-Wahhaab",
+    "Ar-Razzaaq",
+    "Al-Fattaah",
+    "Al-Aleem",
+    "Al-Qaabid",
+    "Al-Baasit",
+    "Al-Khaafid",
+    "Ar-Raafi'",
+    "Al-Mu'izz",
+    "Al-Mu'zill",
+    "As-Samee'",
+    "Al-Baseer",
+    "Al-Hakam",
+    "Al-Adl",
+    "Al-Lateef",
+    "Al-Khabeer",
+    "Al-Haleem",
+    "Al-Azeem",
+    "Al-Ghafoor",
+    "Ash-Shakoor",
+    "Al-'Ali",
+    "Al-Kabeer",
+    "Al-Hafeez",
+    "Al-Muqeet",
+    "Al-Haseeb",
+    "Al-Jaleel",
+    "Al-Kareem",
+    "Ar-Raqeeb",
+    "Al-Mujeeb",
+    "Al-Wasi'",
+    "Al-Hakeem",
+    "Al-Wadood",
+    "Al-Majeed",
+    "Al-Ba'ith",
+    "As-Shaheed",
+    "Al-Haqq",
+    "Al-Wakeel",
+    "Al-Qawiyy",
+    "Al-Mateen",
+    "Al-Waliyy",
+    "Al-Hameed",
+    "Al-Muhsi",
+    "Al-Mubdi",
+    "Al-Mu'eed",
+    "Al-Muh'yee",
+    "Al-Mumeet",
+    "Al-Hayyu",
+    "Al-Qayyum",
+    "Al-Waajid",
+    "Al-Maajid",
+    "Al-Waahid",
+    "Al-Ahad",
+    "As-Samad",
+    "Al-Qaadir",
+    "Al-Muqtadir",
+    "Al-Muqaddim",
+    "Al-Mu'akhkhar",
+    "Al-Awwal",
+    "Al-Aakhir",
+    "Az-Zaahir",
+    "Al-Baatin",
+    "Al-Waali",
+    "Al-Muta'ali",
+    "Al-Barr",
+    "At-Tawwaab",
+    "Al-Muntaqim",
+    "Al-'Afuw",
+    "Ar-Ra'oof",
+    "Al Malik al-Mulk",
+    "Al Dhul-Jalal wal-Ikram",
+    "Al-Muqsit",
+    "Al-Jaami'",
+    "Al-Ghani",
+    "Al-Mughni",
+    "Al-Mani'",
+    "Ad-Dhaarr",
+    "An-Naafi'",
+    "An-Noor",
+    "Al-Haadi",
+    "Al-Baadi'",
+    "Al-Baaqi",
+    "Al-Waaris",
+    "Ar-Rasheed",
+    "As-Saboor"
+  ];
+
+  static const TICK_MULTIPLIER = 2.142857142857143;
+
   // Shared Preferences KEY constants
   static const SHARED_PREFERENCES_KEY = 'TasbeehData';
   static const KEY_COUNT = 'count';
@@ -23,6 +128,8 @@ class Data with ChangeNotifier {
   static const KEY_STEP = 'step';
   static const KEY_TICK_DURATION = 'tickDuration';
   static const KEY_MIN_TICK_DURATION = 'minTickDuration';
+  static const KEY_IS_99_NAMES = "is99Names";
+  static const KEY_CURRENT_NAME_INDEX = "currentNameIndex";
   static const KEY_AUDIO_ON = 'isAudioOn';
   static const KEY_VIBRATE_ON = 'isVibrateOn';
   static const KEY_IS_SPEECH_ON = 'isSpeechOn';
@@ -50,6 +157,7 @@ class Data with ChangeNotifier {
   static const KEY_DEVICE_TICK_DURATION = 'deviceTickDuration';
   static const KEY_DEVICE_MIN_TICK_DURATION = 'deviceMinTickDuration';
   static const KEY_DEVICE_AUDIO_ON = 'deviceIsAudioOn';
+  static const KEY_DEVICE_IS_99_NAMES = 'deviceIs99Names';
   static const KEY_DEVICE_VIBRATE_ON = 'deviceIsVibrateOn';
   static const KEY_DEVICE_AUTO_PILOT_ON = 'deviceIsAutoPilotOn';
 
@@ -154,6 +262,9 @@ class Data with ChangeNotifier {
       _data[KEY_STEP] = int.parse(data[KEY_STEP]);
       _data[KEY_TICK_DURATION] = int.parse(data[KEY_TICK_DURATION]);
       _data[KEY_MIN_TICK_DURATION] = int.parse(data[KEY_MIN_TICK_DURATION]);
+      _data[KEY_IS_99_NAMES] = 
+          data[KEY_IS_99_NAMES].toString() == 'true';
+      _data[KEY_CURRENT_NAME_INDEX] = int.parse(data[KEY_CURRENT_NAME_INDEX]);
       _data[KEY_AUDIO_ON] =
           data[KEY_AUDIO_ON].toString().toLowerCase() == 'true';
       _data[KEY_VIBRATE_ON] =
@@ -192,6 +303,8 @@ class Data with ChangeNotifier {
             KEY_STEP: step.toString(),
             KEY_TICK_DURATION: tickDuration.toString(),
             KEY_MIN_TICK_DURATION: minTickDuration.toString(),
+            KEY_IS_99_NAMES: is99Names.toString(),
+            KEY_CURRENT_NAME_INDEX: currentNameIndex.toString(),
             KEY_AUDIO_ON: isAudioOn.toString(),
             KEY_VIBRATE_ON: isVibrateOn.toString(),
             KEY_IS_SPEECH_ON: isSpeechOn.toString(),
@@ -225,6 +338,8 @@ class Data with ChangeNotifier {
       String pStep,
       String pTickDuration,
       String pMinTickDuration,
+      String pis99Names,
+      String pCurrentNameIndex,
       String pIsAudioOn,
       String pIsVibrateOn,
       String pIsSpeechOn,
@@ -236,6 +351,8 @@ class Data with ChangeNotifier {
     _data[KEY_STEP] = int.parse(pStep);
     _data[KEY_TICK_DURATION] = int.parse(pTickDuration);
     _data[KEY_MIN_TICK_DURATION] = int.parse(pMinTickDuration);
+    _data[KEY_IS_99_NAMES] = pis99Names.toLowerCase() == 'true';
+    _data[KEY_CURRENT_NAME_INDEX] = int.parse(pCurrentNameIndex);
     _data[KEY_AUDIO_ON] = pIsAudioOn.toLowerCase() == 'true';
     _data[KEY_VIBRATE_ON] = pIsVibrateOn.toLowerCase() == 'true';
     _data[KEY_IS_SPEECH_ON] = pIsSpeechOn.toLowerCase() == 'true';
@@ -279,33 +396,68 @@ class Data with ChangeNotifier {
     return await saveData();
   }
 
+  Future<bool> reset99NamesTasbeeh() async {
+    _data[KEY_COUNT] = 0;
+    _data[KEY_CURRENT_NAME_INDEX] = 0;
+
+    return await saveData();
+  }
+
   Future<void> incrementTasbeeh() async {
+    
     if (count >= targetCount) {
-      _data[KEY_IS_PLAY_PAUSE] = false;
-      if (isAudioOn) {
-        await audioUtil.play100CompleteAudio(isSpeechOn, false);
-      }
-      if (isVibrateOn) {    
-        await vibrate(1000, 1);
-        // if (usbPort != null) {
-        //   await usbPort!.write(Uint8List(0x00));
-        // }
-      }
-      if (isNotificationOn) {
-        await notificationUtil.showNotification(5, this);
-      }
+      data[KEY_CURRENT_NAME_INDEX] = currentNameIndex + 1;
+      await saveData();
       setDirty('', true);
       notifyListeners();
-      return;
+
+      if (!is99Names ||
+          (is99Names && currentNameIndex >= Allah99Names.length)) {
+        _data[KEY_IS_PLAY_PAUSE] = false;
+        if (isAudioOn) {
+          await audioUtil.play100CompleteAudio(isSpeechOn, false);
+        }
+        if (isVibrateOn) {
+          await vibrate(1000, 1);
+          // if (usbPort != null) {
+          //   await usbPort!.write(Uint8List(0x00));
+          // }
+        }
+        if (isNotificationOn) {
+          await notificationUtil.showNotification(5, this);
+        }
+        setDirty('', true);
+        notifyListeners();
+        return;
+      } else {
+        if (isAudioOn) {
+          await audioUtil.play100CompleteAudio(
+              isSpeechOn, isAutoPilotOn && count > 30);
+        }
+
+        if (isVibrateOn) {
+          await vibrate(100, 3);
+        }
+
+        if (isNotificationOn) {
+          await notificationUtil.showNotification(2, this);
+        }
+
+        data[KEY_COUNT] = 0;
+        await saveData();
+        setDirty('', true);
+        notifyListeners();
+        return;
+      }
     }
 
     _data[KEY_COUNT] = count + step;
     await saveData();
 
     if (isAudioOn) {
-      if (count != 0 && count == targetCount) {
+      if (!is99Names && count != 0 && count == targetCount) {
         await audioUtil.playTasbeehCompleteAudio(isSpeechOn);
-      } else if (count % 100 == 0) {
+      } else if (!is99Names && count % 100 == 0) {
         await audioUtil.play100CompleteAudio(
             isSpeechOn, isAutoPilotOn && count > 30);
       } else {
@@ -319,12 +471,12 @@ class Data with ChangeNotifier {
         audioUtil.playSilenceAudio();
       }
 
-      if (count != 0 && count == targetCount) {
+      if (!is99Names && count != 0 && count == targetCount) {
         await vibrate(1000, 1);
         // if (usbPort != null) {
         //   await usbPort!.write(Uint8List(0x00));
         // }
-      } else if (count % 100 == 0) {
+      } else if (!is99Names && count % 100 == 0) {
         await vibrate(100, 3);
         // if (usbPort != null) {
         //   await usbPort!.write(Uint8List(0x00));
@@ -338,9 +490,9 @@ class Data with ChangeNotifier {
     }
 
     if (isNotificationOn) {
-      if (count != 0 && count == targetCount) {
+      if (!is99Names && count != 0 && count == targetCount) {
         await notificationUtil.showNotification(5, this);
-      } else if (count % 100 == 0) {
+      } else if (!is99Names && count % 100 == 0) {
         await notificationUtil.showNotification(2, this);
       } else {
         await notificationUtil.showNotification(1, this);
@@ -693,6 +845,8 @@ class Data with ChangeNotifier {
         break;
       case 3:
         _data[KEY_DEVICE_STEP] = step;
+        _data[KEY_IS_99_NAMES] = is99Names;
+        _data[KEY_CURRENT_NAME_INDEX] = currentNameIndex;
         _data[KEY_DEVICE_AUDIO_ON] = isAudioOn;
         _data[KEY_DEVICE_VIBRATE_ON] = isVibrateOn;
         _data[KEY_DEVICE_AUTO_PILOT_ON] = isAutoPilotOn;
@@ -701,6 +855,8 @@ class Data with ChangeNotifier {
         _data[KEY_DEVICE_STEP] = step;
         _data[KEY_DEVICE_TICK_DURATION] = tickDuration;
         _data[KEY_DEVICE_MIN_TICK_DURATION] = minTickDuration;
+        _data[KEY_CURRENT_NAME_INDEX] = currentNameIndex;
+        _data[KEY_IS_99_NAMES] = is99Names;
         _data[KEY_DEVICE_AUDIO_ON] = isAudioOn;
         _data[KEY_DEVICE_VIBRATE_ON] = isVibrateOn;
         _data[KEY_DEVICE_AUTO_PILOT_ON] = isAutoPilotOn;
@@ -793,6 +949,14 @@ class Data with ChangeNotifier {
 
   int get minTickDuration {
     return _data[KEY_MIN_TICK_DURATION];
+  }
+
+  bool get is99Names {
+    return _data[KEY_IS_99_NAMES];
+  }
+
+  int get currentNameIndex {
+    return _data[KEY_CURRENT_NAME_INDEX];
   }
 
   bool get isAudioOn {

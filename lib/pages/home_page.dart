@@ -150,12 +150,15 @@ class _HomePageState extends State<HomePage> {
                         width: MediaQuery.of(context).size.width / 1.1,
                         padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
                         child: Text(
-                          data.count.toString(),
+                          data.is99Names
+                              ? (data.currentNameIndex < Data.Allah99Names.length ? Data.Allah99Names[data.currentNameIndex] : Data.Allah99Names[98])
+                              : data.count.toString(),
                           style: TextStyle(
                               color: Colors.green[800],
                               fontWeight: FontWeight.bold,
-                              fontSize:
-                                  MediaQuery.of(context).textScaler.scale(100)),
+                              fontSize: MediaQuery.of(context)
+                                  .textScaler
+                                  .scale(data.is99Names ? 30 : 100)),
                         ),
                       ),
                       backgroundColor: Colors.grey[300],
@@ -176,8 +179,9 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  // data.totalCount.toString(),
-                                  data.totalCount.toString(),
+                                  data.is99Names
+                                      ? (data.currentNameIndex < Data.Allah99Names.length ?  (data.currentNameIndex + 1).toString() : '99')
+                                      : data.totalCount.toString(),
                                   style: TextStyle(
                                       color: Colors.green[800],
                                       fontWeight: FontWeight.bold,
@@ -188,7 +192,7 @@ class _HomePageState extends State<HomePage> {
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height /
                                         80),
-                                Text('Total',
+                                Text(data.is99Names ? 'Current Name' : 'Total',
                                     style: TextStyle(
                                         fontSize: MediaQuery.of(context)
                                             .textScaler
@@ -200,8 +204,9 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  // data.dayCount.toString(),
-                                  data.dayCount.toString(),
+                                  data.is99Names
+                                      ? data.targetCount.toString()
+                                      : data.dayCount.toString(),
                                   style: TextStyle(
                                       color: Colors.green[800],
                                       fontWeight: FontWeight.bold,
@@ -212,7 +217,7 @@ class _HomePageState extends State<HomePage> {
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height /
                                         80),
-                                Text('Today',
+                                Text(data.is99Names ? 'Target' : 'Today',
                                     style: TextStyle(
                                         fontSize: MediaQuery.of(context)
                                             .textScaler
@@ -224,8 +229,9 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Text(
-                                  // data.targetCount.toString(),
-                                  data.targetCount.toString(),
+                                  data.is99Names
+                                      ? data.count.toString()
+                                      : data.targetCount.toString(),
                                   style: TextStyle(
                                       color: Colors.green[800],
                                       fontWeight: FontWeight.bold,
@@ -236,7 +242,7 @@ class _HomePageState extends State<HomePage> {
                                 SizedBox(
                                     height: MediaQuery.of(context).size.height /
                                         80),
-                                Text('Target',
+                                Text(data.is99Names ? 'Count' : 'Target',
                                     style: TextStyle(
                                         fontSize: MediaQuery.of(context)
                                             .textScaler
@@ -269,6 +275,8 @@ class _HomePageState extends State<HomePage> {
                                 ).then((result) async {
                                   if (result) {
                                     bool result =
+                                        data.is99Names ?
+                                        await data.reset99NamesTasbeeh() :
                                         await data.resetCurrentCount();
                                     if (result) {
                                       setState(() {});
@@ -297,9 +305,11 @@ class _HomePageState extends State<HomePage> {
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: Colors.blueGrey),
                             ),
+                            if(!data.is99Names)
                             SizedBox(
                                 height:
                                     MediaQuery.of(context).size.height / 30),
+                            if(!data.is99Names)
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceAround,
                               children: [
